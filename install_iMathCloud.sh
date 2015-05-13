@@ -37,12 +37,13 @@ sudo pip install virtualenv
 echo ""
 echo "Creating virtualenv virt1..."
 cd /iMathCloud/environments
-virtualenv virt1
+sudo virtualenv virt1
 cd virt1
 source bin/activate
 pip install -r ~/GIT/iMathCloud/environment/requirements.txt
 deactivate
 
+sudo groupadd imathuser
 
 echo ""
 echo "------------------------------------------------------------------------------------------"
@@ -52,7 +53,7 @@ git clone https://github.com/imathresearch/hpc2_BBVA.git hpc2
 sudo mkdir /etc/hpc2/
 sudo mkdir /etc/hpc2/hpc2.config
 sudo cp ~/GIT/hpc2/HPC2/resources/prod/config.properties /etc/hpc2/hpc2.config
-python ~/GIT/hpc2/setup.py install
+sudo python ~/GIT/hpc2/setup.py install
 
 echo ""
 echo "------------------------------------------------------------------------------------------"
@@ -64,7 +65,7 @@ sudo mkdir /etc/colossus/colossus.config
 sudo cp ~/GIT/colossus/Colossus/resources/prod/* /etc/colossus/colossus.config
 cd /iMathCloud/environments/virt1
 source bin/activate
-python ~/GIT/colossus/setup.py install
+sudo python ~/GIT/colossus/setup.py install
 deactivate
 
 echo ""

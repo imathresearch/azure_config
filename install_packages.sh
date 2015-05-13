@@ -23,29 +23,16 @@ echo ""
 echo "------------------------------------------------------------------------------------------"
 echo "Installing general required packages"
 echo "------------------------------------------------------------------------------------------"
-packages="libcurl4-openssl-dev openssh-server git-core postgresql libpq-dev libfreetype6-dev ffmpeg memcoder"
+packages="libcurl4-openssl-dev openssh-server git-core postgresql libpq-dev libfreetype6-dev"
 aptget "$packages"
 
 echo ""
 echo "------------------------------------------------------------------------------------------"
 echo "Installing python required packages"
 echo "------------------------------------------------------------------------------------------"
-packages="python-dev python-pycurl python-numpy python-scipy python-sklearn python-pymongo python-simplejson python-psycopg2 python-paramiko python-tornado"
+packages="python-dev python-pycurl python-numpy python-scipy python-sklearn python-pymongo python-simplejson python-psycopg2 python-paramiko python-tornado python-psutil python-pip python-matplotlib"
 aptget "$packages"
 
-echo ""
-echo "------------------------------------------------------------------------------------------"
-echo "Installing pip"
-echo "------------------------------------------------------------------------------------------"
-if [ ! $(which pip) ];
-then
-    echo "Cannot find pip. Installing (sudo)..."
-    cd /tmp
-    wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py
-    sudo python get-pip.py
-fi
-
-echo ""
 echo "------------------------------------------------------------------------------------------"
 echo "Setting postgresql "
 echo "------------------------------------------------------------------------------------------"
@@ -53,6 +40,7 @@ sudo export LANGUAGE="es_ES.UTF-8"
 sudo export LC_ALL="es_ES.UTF-8"
 sudo dpkg-reconfigure locales
 sudo pg_createcluster 9.3 main --start
+
 echo ""
 echo "------------------------------------------------------------------------------------------"
 echo "Installing the common version of IPython Notebook"
@@ -69,7 +57,7 @@ echo ""
 echo "------------------------------------------------------------------------------------------"
 echo "Installing R"
 echo "------------------------------------------------------------------------------------------"
-packages="r-base"
+packages="r-base python-rpy2"
 aptget "$packages"
 
 echo ""
