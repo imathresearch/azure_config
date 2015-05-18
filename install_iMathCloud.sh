@@ -29,6 +29,9 @@ sudo mkdir -p trash
 sudo mkdir -p temp
 sudo mkdir -p environments
 sudo mkdir -p data
+sudo echo "ipinyol@imathresearch.com" >> adminFileEmail.txt
+sudo echo "izubizarreta@imathresearch.com" >> adminFileEmail.txt
+sudo echo "ammartinez@imathresearch.com" >> adminFileEmail.txt
 
 echo ""
 echo "Installing virtualenv tool..."
@@ -72,7 +75,7 @@ echo ""
 echo "------------------------------------------------------------------------------------------"
 echo "Cloning IPython Notebook"
 echo "------------------------------------------------------------------------------------------"
-git clone https://github.com/imathresearch/iMathCloud_Console.git iMathCloud_Console
+git clone https://github.com/imathresearch/iMathCloud_Console_BBVA.git iMathCloud_Console
 
 
 
