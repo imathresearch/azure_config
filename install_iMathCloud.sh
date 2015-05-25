@@ -29,9 +29,10 @@ sudo mkdir -p trash
 sudo mkdir -p temp
 sudo mkdir -p environments
 sudo mkdir -p data
-sudo echo "ipinyol@imathresearch.com" >> adminFileEmail.txt
-sudo echo "izubizarreta@imathresearch.com" >> adminFileEmail.txt
-sudo echo "ammartinez@imathresearch.com" >> adminFileEmail.txt
+sudo chown -R imath:imath /iMathCloud
+echo "ipinyol@imathresearch.com" >> adminFileEmail.txt
+echo "izubizarreta@imathresearch.com" >> adminFileEmail.txt
+echo "ammartinez@imathresearch.com" >> adminFileEmail.txt
 
 echo ""
 echo "Installing virtualenv tool..."
@@ -40,7 +41,7 @@ sudo pip install virtualenv
 echo ""
 echo "Creating virtualenv virt1..."
 cd /iMathCloud/environments
-sudo virtualenv virt1
+virtualenv virt1
 cd virt1
 source bin/activate
 pip install -r ~/GIT/iMathCloud/environment/requirements.txt
@@ -52,6 +53,7 @@ echo ""
 echo "------------------------------------------------------------------------------------------"
 echo "Cloning HPC2 and setting up"
 echo "------------------------------------------------------------------------------------------"
+cd ~/GIT
 git clone https://github.com/imathresearch/hpc2_BBVA.git hpc2
 sudo mkdir /etc/hpc2/
 sudo mkdir /etc/hpc2/hpc2.config
@@ -75,6 +77,7 @@ echo ""
 echo "------------------------------------------------------------------------------------------"
 echo "Cloning IPython Notebook"
 echo "------------------------------------------------------------------------------------------"
+cd ~/GIT
 git clone https://github.com/imathresearch/iMathCloud_Console_BBVA.git iMathCloud_Console
 
 
@@ -105,7 +108,13 @@ cd ~/GIT/iMathCloud_Console/ipython-rel-0.13.1
 sudo python setup.py install
 
 cd ~/GIT/iMathCloud_Console/JSAnimation
-sudo python setup.py installl
+sudo python setup.py install
+
+#Required for installing the video codec
+sudo echo "deb http://us.archive.ubuntu.com/ubuntu/ precise multiverse" >> /etc/apt/sources.list 
+sudo echo "deb-src http://us.archive.ubuntu.com/ubuntu/ precise multiverse" >> /etc/apt/sources.list
+sudo echo "deb http://us.archive.ubuntu.com/ubuntu/ precise-updates multiverse" >> /etc/apt/sources.list
+sudo echo "deb-src http://us.archive.ubuntu.com/ubuntu/ precise-updates multiverse" >> /etc/apt/sources.list
 
 sudo apt-get remove x264 ffmpeg mplayer mencoder
 sudo apt-get install libsdl1.2-dev zlib1g-dev libfaad-dev libfaac-dev libgsm1-dev libtheora-dev libvorbis-dev libspeex-dev libopencore-amrwb-dev libopencore-amrnb-dev libxvidcore-dev libxvidcore4 libmp3lame-dev libjpeg8 libjpeg8-dev yasm

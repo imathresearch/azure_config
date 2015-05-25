@@ -6,7 +6,7 @@ if [ -d  ~/GIT ];
 then
     cd ~/GIT
 else
-    sudo mkdir ~/GIT
+    mkdir ~/GIT
     cd ~/GIT
 fi
 
